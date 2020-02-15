@@ -11,8 +11,8 @@ import posenet
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
 parser.add_argument('--cam_id', type=int, default=0)
-parser.add_argument('--cam_width', type=int, default=960)
-parser.add_argument('--cam_height', type=int, default=600)
+parser.add_argument('--cam_width', type=int, default=640)
+parser.add_argument('--cam_height', type=int, default=480)
 parser.add_argument('--scale_factor', type=float, default=0.7125)
 parser.add_argument('--file', type=str, default=None, help="Optionally use a video file instead of a live camera")
 args = parser.parse_args()
@@ -82,8 +82,8 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
 # Initialize webcam feed
 video = cv2.VideoCapture(0)
-ret = video.set(3,960)
-ret = video.set(4,600)
+ret = video.set(3,640)
+ret = video.set(4,480)
 
 while(True):
 
@@ -136,7 +136,7 @@ while(True):
         category_index,
         use_normalized_coordinates=True,
         line_thickness=8,
-        min_score_thresh=0.60)
+        min_score_thresh=0.70)
 
     # All the results have been drawn on the frame, so it's time to display it.
     cv2.imshow('Skeleton Tracker', skeleton_frame)
