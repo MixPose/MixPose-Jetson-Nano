@@ -11,8 +11,8 @@ import posenet
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
 parser.add_argument('--cam_id', type=int, default=0)
-parser.add_argument('--cam_width', type=int, default=960)
-parser.add_argument('--cam_height', type=int, default=600)
+parser.add_argument('--cam_width', type=int, default=640)
+parser.add_argument('--cam_height', type=int, default=480)
 parser.add_argument('--scale_factor', type=float, default=0.7125)
 parser.add_argument('--file', type=str, default=None, help="Optionally use a video file instead of a live camera")
 args = parser.parse_args()
@@ -82,8 +82,8 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
 # Initialize webcam feed
 video = cv2.VideoCapture(0)
-ret = video.set(3,960)
-ret = video.set(4,600)
+ret = video.set(3,640)
+ret = video.set(4,480)
 
 while(True):
 
@@ -107,10 +107,6 @@ while(True):
     keypoint_coords *= output_scale
 
     # TODO this isn't particularly fast, use GL for drawing and display someday...
-    overlay_frame = posenet.draw_skel_and_kp(
-            display_image, pose_scores, keypoint_scores, keypoint_coords,
-            min_pose_score=0.15, min_part_score=0.1)
-
     skeleton_frame = posenet.draw_skel_and_kp_figureonly(
             display_image, pose_scores, keypoint_scores, keypoint_coords,
             min_pose_score=0.15, min_part_score=0.1)
@@ -135,11 +131,14 @@ while(True):
         np.squeeze(scores),
         category_index,
         use_normalized_coordinates=True,
-        line_thickness=8,
-        min_score_thresh=0.60)
+        line_thickness=6,
+        min_score_thresh=0.75)
+
+    combined = cv2.add(display_image, skeleton_frame)
+
 
     # All the results have been drawn on the frame, so it's time to display it.
-    cv2.imshow('Object detector', skeleton_frame)
+    cv2.imshow('Skeleton Tracker', combined)
 
     
     frame_count += 1

@@ -107,10 +107,6 @@ while(True):
     keypoint_coords *= output_scale
 
     # TODO this isn't particularly fast, use GL for drawing and display someday...
-    overlay_frame = posenet.draw_skel_and_kp(
-            display_image, pose_scores, keypoint_scores, keypoint_coords,
-            min_pose_score=0.15, min_part_score=0.1)
-
     skeleton_frame = posenet.draw_skel_and_kp_figureonly(
             display_image, pose_scores, keypoint_scores, keypoint_coords,
             min_pose_score=0.15, min_part_score=0.1)
