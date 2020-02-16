@@ -132,7 +132,7 @@ while(True):
         category_index,
         use_normalized_coordinates=True,
         line_thickness=6,
-        min_score_thresh=0.75)
+        min_score_thresh=0.85)
 
     combined = cv2.add(display_image, skeleton_frame)
 

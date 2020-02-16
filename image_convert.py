@@ -46,14 +46,14 @@ def main():
                 displacement_bwd_result.squeeze(axis=0),
                 output_stride=output_stride,
                 max_pose_detections=10,
-                min_pose_score=0.03)
+                min_pose_score=0.07)
 
             keypoint_coords *= output_scale
 
             if args.output_dir:
-                draw_image = posenet.draw_skel_and_kp_figureonly(
+                draw_image = posenet.draw_skel_and_kp(
                     draw_image, pose_scores, keypoint_scores, keypoint_coords,
-                    min_pose_score=0.03, min_part_score=0.03)
+                    min_pose_score=0.07, min_part_score=0.07)
 
                 cv2.imwrite(os.path.join(args.output_dir, os.path.relpath(f, args.image_dir)), draw_image)
 

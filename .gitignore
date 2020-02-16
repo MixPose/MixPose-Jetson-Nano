@@ -4,6 +4,7 @@ output/*
 .idea/*
 .idea
 _models/*
+posenet_video_file_maker.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
