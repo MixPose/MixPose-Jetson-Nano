@@ -132,14 +132,19 @@ while(True):
         category_index,
         use_normalized_coordinates=True,
         line_thickness=6,
-        min_score_thresh=0.85)
+        min_score_thresh=0.78)
 
     combined = cv2.add(display_image, skeleton_frame)
 
+    cv2.putText(combined, '2/3 active viewers',
+		(10,500),
+		cv2.FONT_HERSHEY_SIMPLEX,
+		1,
+		(255,255,255),
+		2)
 
     # All the results have been drawn on the frame, so it's time to display it.
-    cv2.imshow('Skeleton Tracker', combined)
-
+    cv2.imshow('MixPose', combined)
     
     frame_count += 1
     # Press 'q' to quit
