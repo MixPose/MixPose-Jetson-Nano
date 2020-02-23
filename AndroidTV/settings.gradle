@@ -1,0 +1,2 @@
+include ':app', ':libusbcamera', ':posenet'
+rootProject.name='FitStream TV'

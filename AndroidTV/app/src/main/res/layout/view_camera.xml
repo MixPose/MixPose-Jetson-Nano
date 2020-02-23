@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#FF000000"
+    tools:context=".CameraActivity"
+    tools:ignore="MergeRootFrame"
+    >
+
+    <FrameLayout
+        android:id="@+id/subscriber_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"/>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:padding="40dp">
+        <com.serenegiant.usb.widget.UVCCameraTextureView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+        <ImageView
+            android:id="@+id/surface"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"
+            />
+    </RelativeLayout>
+    <ImageView
+        android:scaleType="fitEnd"
+        android:id="@+id/btnLeaderBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@mipmap/leaderboardicon"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:focusedByDefault="true"
+        /></RelativeLayout>
